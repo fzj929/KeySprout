@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="字响 - 一个美观、专注、支持发音的网页单词打字练习工具" />
+  <title>KeySprout · 小学生单词打字练习</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="KeySprout 首页">
+      <span class="brand-mark">K</span>
+      <span><strong>KeySprout</strong><small>TYPE · LISTEN · GROW</small></span>
+    </a>
+    <div class="session-pill"><span class="pulse"></span> 本次练习进行中</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow">WORD TYPING STUDIO · 001</div>
+      <h1>听见单词，<br><em>敲下记忆。</em></h1>
+      <p>跟随发音逐字输入，在键盘的节奏里记住每一个英文单词。</p>
+    </section>
+
+    <section class="practice-shell" aria-label="单词练习区">
+      <aside class="settings-panel">
+        <div class="panel-label">练习设置</div>
+        <label for="level">选择年级</label>
+        <div class="select-wrap">
+          <select id="level">
+            <option value="grade1">一年级 · 字母启蒙</option>
+            <option value="grade2">二年级 · 基础短词</option>
+            <option value="grade3">三年级 · 日常词汇</option>
+            <option value="grade4">四年级 · 拼写进阶</option>
+            <option value="grade5">五年级 · 复杂组合</option>
+            <option value="grade6">六年级 · 长词挑战</option>
+          </select>
+        </div>
+        <label for="count">本轮词数</label>
+        <div class="segmented" id="count" role="group" aria-label="选择练习词数">
+          <button data-count="10" class="active">10</button>
+          <button data-count="20">20</button>
+          <button data-count="30">30</button>
+        </div>
+        <div class="shortcut-note">
+          <span>快捷键</span>
+          <p><kbd>Tab</kbd> 播放发音<br><kbd>Enter</kbd> 下一个单词</p>
+        </div>
+      </aside>
+
+      <div class="typing-card">
+        <div class="stats-row">
+          <div><span>进度</span><strong id="progressStat">01 / 10</strong></div>
+          <div><span>速度</span><strong><b id="wpmStat">0</b> WPM</strong></div>
+          <div><span>正确率</span><strong id="accuracyStat">100%</strong></div>
+        </div>
+        <div class="progress-track"><div id="progressBar"></div></div>
+
+        <div class="word-stage">
+          <button class="sound-button" id="soundButton" aria-label="播放单词发音" title="播放发音 (Tab)">
+            <span class="sound-rings"></span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Zm4.5 3.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12"/></svg>
+          </button>
+          <div class="word-meta"><span id="phonetic">/ˈæm.bɪ.ʃən/</span><span id="meaning">n. 雄心；抱负</span></div>
+          <div class="target-word" id="targetWord" aria-live="polite"></div>
+          <label class="sr-only" for="wordInput">请输入上方英文单词</label>
+          <input id="wordInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="inputHint" autofocus />
+          <p class="input-hint" id="inputHint">请完整输入上方单词</p>
+        </div>
+
+        <div class="keyboard-guide" aria-label="键盘与指法提示">
+          <div class="finger-coach">
+            <span class="coach-icon" aria-hidden="true">☝</span>
+            <div><small>下一键指法</small><strong id="fingerHint" aria-live="polite">左手小指按 A 键</strong></div>
+          </div>
+          <div class="keyboard-with-hands">
+            <div class="hand-panel left-hand-visual" data-hand="左手" aria-label="左手指法图">
+              <svg viewBox="0 0 140 150" role="img" aria-label="左手五指">
+                <path class="palm" d="M27 82c0-15 12-27 27-27h45c16 0 29 13 29 29v29c0 20-16 36-36 36H64c-20 0-37-17-37-37V82Z"/>
+                <g class="finger" data-finger="小指"><rect x="10" y="47" width="20" height="61" rx="10"/></g>
+                <g class="finger" data-finger="无名指"><rect x="34" y="23" width="21" height="82" rx="10"/></g>
+                <g class="finger" data-finger="中指"><rect x="59" y="10" width="21" height="95" rx="10"/></g>
+                <g class="finger" data-finger="食指"><rect x="84" y="27" width="21" height="78" rx="10"/></g>
+                <g class="finger" data-finger="拇指"><rect x="108" y="65" width="21" height="60" rx="10" transform="rotate(-27 118 95)"/></g>
+              </svg>
+              <strong>左手</strong><small>ASDF 基准键</small>
+            </div>
+            <div class="virtual-keyboard" id="virtualKeyboard" aria-label="QWERTY 虚拟键盘"></div>
+            <div class="hand-panel right-hand-visual" data-hand="右手" aria-label="右手指法图">
+              <svg viewBox="0 0 140 150" role="img" aria-label="右手五指">
+                <path class="palm" d="M27 82c0-15 12-27 27-27h45c16 0 29 13 29 29v29c0 20-16 36-36 36H64c-20 0-37-17-37-37V82Z"/>
+                <g class="finger" data-finger="小指"><rect x="10" y="47" width="20" height="61" rx="10"/></g>
+                <g class="finger" data-finger="无名指"><rect x="34" y="23" width="21" height="82" rx="10"/></g>
+                <g class="finger" data-finger="中指"><rect x="59" y="10" width="21" height="95" rx="10"/></g>
+                <g class="finger" data-finger="食指"><rect x="84" y="27" width="21" height="78" rx="10"/></g>
+                <g class="finger" data-finger="拇指"><rect x="108" y="65" width="21" height="60" rx="10" transform="rotate(-27 118 95)"/></g>
+              </svg>
+              <strong>右手</strong><small>JKL; 基准键</small>
+            </div>
+          </div>
+          <div class="hand-legend"><span><i class="left-dot"></i>左手负责</span><span><i class="right-dot"></i>右手负责</span><span><i class="target-dot"></i>下一按键</span></div>
+        </div>
+
+        <div class="card-footer">
+          <span id="feedback"><i></i> 准备好了，开始输入吧</span>
+          <button id="nextButton">下一个 <span>↵</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="tip-strip">
+      <span>练习技巧</span>
+      <p>看准高亮按键，使用提示的手指轻轻敲击；手腕放松，准确比速度更重要。</p>
+      <span class="edition">WEB EDITION · 2026</span>
+    </section>
+  </main>
+
+  <div class="result-modal" id="resultModal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="result-seal">完成</div>
+      <p class="eyebrow">SESSION COMPLETE</p>
+      <h2 id="resultTitle">这一轮，敲得漂亮。</h2>
+      <div class="result-grid">
+        <div><strong id="finalWpm">0</strong><span>WPM</span></div>
+        <div><strong id="finalAccuracy">100%</strong><span>正确率</span></div>
+        <div><strong id="finalCount">10</strong><span>完成单词</span></div>
+      </div>
+      <button id="restartButton">再练一轮</button>
+    </div>
+  </div>
+
+  <script src="common-words.js"></script>
+  <script src="word-details.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
