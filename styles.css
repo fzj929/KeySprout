@@ -91,16 +91,15 @@ kbd { display: inline-block; min-width: 33px; padding: 2px 5px; color: #ddd5c7; 
 .finger-coach strong { font-size: 13px; letter-spacing: .06em; }
 .virtual-keyboard { width: min(100%, 570px); margin: auto; user-select: none; }
 .keyboard-with-hands { display: block; }
-.hand-panel { display: none; flex-direction: column; align-items: center; justify-content: end; padding: 7px 8px 8px; opacity: .58; border: 1px solid transparent; border-radius: 8px; transition: opacity .2s, background .2s, border-color .2s, transform .2s; }
-.hand-panel svg { width: 132px; height: 140px; overflow: visible; }
-.hand-panel .palm { fill: rgba(128,144,121,.22); stroke: rgba(23,34,29,.35); stroke-width: 1.5; }
-.hand-panel .finger rect { fill: #d8d6c7; stroke: rgba(23,34,29,.38); stroke-width: 1.5; transition: fill .18s, stroke .18s, filter .18s; }
+.hand-panel { display: none; flex-direction: column; align-items: center; pointer-events: none; opacity: .27; transition: opacity .22s, filter .22s; }
+.hand-panel svg { width: 240px; height: 220px; overflow: visible; filter: drop-shadow(0 8px 8px rgba(48,31,23,.12)); }
+.hand-panel .wrist, .hand-panel .palm, .hand-panel .finger-shape { stroke: rgba(83,48,34,.5); stroke-width: 1.2; stroke-linejoin: round; }
+.hand-panel .finger-shape { transition: fill .18s, stroke .18s, filter .18s; }
+.hand-panel .nail { fill: rgba(255,239,226,.62); stroke: rgba(110,67,50,.35); stroke-width: .8; }
 .right-hand-visual svg { transform: scaleX(-1); }
-.right-hand-visual .palm { fill: rgba(216,153,80,.2); }
-.hand-panel strong { margin-top: -3px; font-size: 12px; letter-spacing: .16em; }
-.hand-panel small { margin-top: 2px; color: var(--muted); font: 8px "DM Mono", monospace; letter-spacing: .08em; }
-.hand-panel.active-hand { opacity: 1; background: rgba(255,255,255,.28); border-color: var(--line); transform: translateY(-2px); }
-.hand-panel .finger.active-finger rect { fill: var(--accent); stroke: var(--accent-dark); filter: drop-shadow(0 0 6px rgba(216,76,47,.4)); animation: fingerPulse 1.05s ease-in-out infinite; }
+.hand-panel > strong, .hand-panel > small { display: none; }
+.hand-panel.active-hand { opacity: .46; filter: saturate(1.08); }
+.hand-panel .finger.active-finger .finger-shape { fill: rgba(216,76,47,.86); stroke: var(--accent-dark); filter: drop-shadow(0 0 7px rgba(216,76,47,.48)); animation: fingerPulse 1.05s ease-in-out infinite; }
 .key-row { display: flex; justify-content: center; gap: 5px; margin-top: 5px; }
 .key { position: relative; display: grid; width: clamp(27px, 4.3vw, 44px); height: clamp(30px, 4.3vw, 42px); place-items: center; color: #3f4a43; border: 1px solid rgba(23,34,29,.2); border-radius: 4px; background: #f8f3e7; box-shadow: 0 3px 0 rgba(23,34,29,.16); font: 500 clamp(9px, 1.2vw, 12px) "DM Mono", monospace; transition: transform .1s, color .15s, background .15s, box-shadow .1s; }
 .key.left-hand { border-bottom-color: var(--sage); border-bottom-width: 3px; }
@@ -108,7 +107,7 @@ kbd { display: inline-block; min-width: 33px; padding: 2px 5px; color: #ddd5c7; 
 .key.wide { width: clamp(48px, 7vw, 72px); font-size: 15px; }
 .key.space { width: min(52%, 270px); }
 .key.home-key::after { content: ""; position: absolute; bottom: 5px; width: 7px; height: 1px; background: currentColor; border-radius: 2px; opacity: .45; }
-.key.target-key { z-index: 1; color: white; background: var(--accent); border-color: var(--accent); box-shadow: 0 4px 0 var(--accent-dark), 0 0 0 4px rgba(216,76,47,.13); transform: translateY(-2px) scale(1.05); animation: keyPrompt 1.15s ease-in-out infinite; }
+.key.target-key { z-index: 3; color: white; background: var(--accent); border-color: var(--accent); box-shadow: 0 4px 0 var(--accent-dark), 0 0 0 4px rgba(216,76,47,.13); transform: translateY(-2px) scale(1.05); animation: keyPrompt 1.15s ease-in-out infinite; }
 .key.pressed-key { color: white; background: var(--ink); border-color: var(--ink); box-shadow: 0 1px 0 rgba(23,34,29,.5); transform: translateY(2px); animation: none; }
 .hand-legend { display: flex; justify-content: center; gap: 18px; margin-top: 15px; color: var(--muted); font-size: 9px; letter-spacing: .07em; }
 .hand-legend span { display: flex; align-items: center; gap: 5px; }
@@ -201,9 +200,11 @@ kbd { display: inline-block; min-width: 33px; padding: 2px 5px; color: #ddd5c7; 
   #wordInput { width: 520px; font-size: 20px; }
   .keyboard-guide { padding: 10px 30px 14px; }
   .finger-coach { margin-bottom: 2px; }
-  .keyboard-with-hands { display: grid; grid-template-columns: 160px minmax(590px, 700px) 160px; gap: 28px; align-items: end; justify-content: center; }
-  .hand-panel { display: flex; }
-  .virtual-keyboard { width: 650px; }
+  .keyboard-with-hands { position: relative; display: block; width: 1000px; min-height: 282px; margin: auto; }
+  .hand-panel { position: absolute; z-index: 2; top: 69px; display: flex; width: 250px; }
+  .left-hand-visual { left: 188px; }
+  .right-hand-visual { right: 188px; }
+  .virtual-keyboard { position: relative; width: 650px; }
   .key { width: 46px; height: 36px; font-size: 11px; }
   .key.wide { width: 72px; }
   .key.space { width: 285px; }

@@ -80,25 +80,29 @@
           </div>
           <div class="keyboard-with-hands">
             <div class="hand-panel left-hand-visual" data-hand="左手" aria-label="左手指法图">
-              <svg viewBox="0 0 140 150" role="img" aria-label="左手五指">
-                <path class="palm" d="M27 82c0-15 12-27 27-27h45c16 0 29 13 29 29v29c0 20-16 36-36 36H64c-20 0-37-17-37-37V82Z"/>
-                <g class="finger" data-finger="小指"><rect x="10" y="47" width="20" height="61" rx="10"/></g>
-                <g class="finger" data-finger="无名指"><rect x="34" y="23" width="21" height="82" rx="10"/></g>
-                <g class="finger" data-finger="中指"><rect x="59" y="10" width="21" height="95" rx="10"/></g>
-                <g class="finger" data-finger="食指"><rect x="84" y="27" width="21" height="78" rx="10"/></g>
-                <g class="finger" data-finger="拇指"><rect x="108" y="65" width="21" height="60" rx="10" transform="rotate(-27 118 95)"/></g>
+              <svg viewBox="0 0 180 210" role="img" aria-label="左手五指">
+                <defs><linearGradient id="skinLeft" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0c7aa"/><stop offset="1" stop-color="#c98e71"/></linearGradient></defs>
+                <path class="wrist" d="M49 155h76l9 55H40l9-55Z" fill="url(#skinLeft)"/>
+                <path class="palm" d="M33 88c8-15 21-23 39-23h33c20 0 34 10 40 29l7 28c5 20-4 42-22 52-14 8-58 7-72 1-18-8-28-25-27-45l2-42Z" fill="url(#skinLeft)"/>
+                <g class="finger" data-finger="小指"><path class="finger-shape" d="M39 111c-10 1-17-6-18-16L18 55c-1-11 5-18 13-19 9-1 15 5 16 16l3 41c1 10-3 17-11 18Z" fill="url(#skinLeft)"/><ellipse class="nail" cx="31" cy="50" rx="7" ry="10"/></g>
+                <g class="finger" data-finger="无名指"><path class="finger-shape" d="M64 102c-10 0-16-7-16-17l1-58c0-12 7-19 16-19s15 7 15 19l-1 58c0 11-6 17-15 17Z" fill="url(#skinLeft)"/><ellipse class="nail" cx="65" cy="23" rx="7" ry="11"/></g>
+                <g class="finger" data-finger="中指"><path class="finger-shape" d="M91 99c-10 0-16-7-16-18L78 18C79 6 86 0 95 1c9 0 15 8 14 20l-3 62c0 11-6 16-15 16Z" fill="url(#skinLeft)"/><ellipse class="nail" cx="94" cy="16" rx="7" ry="11"/></g>
+                <g class="finger" data-finger="食指"><path class="finger-shape" d="M118 105c-10-1-15-8-14-19l5-51c1-12 8-18 17-17 9 1 14 9 13 20l-5 51c-1 11-7 17-16 16Z" fill="url(#skinLeft)"/><ellipse class="nail" cx="125" cy="33" rx="7" ry="10" transform="rotate(6 125 33)"/></g>
+                <g class="finger" data-finger="拇指"><path class="finger-shape" d="M128 117c3-9 10-23 18-34 7-10 17-12 24-6 7 6 7 15 1 24l-25 37c-6 9-14 12-21 7-7-5-3-17 3-28Z" fill="url(#skinLeft)"/><ellipse class="nail" cx="160" cy="88" rx="7" ry="10" transform="rotate(38 160 88)"/></g>
               </svg>
               <strong>左手</strong><small>ASDF 基准键</small>
             </div>
             <div class="virtual-keyboard" id="virtualKeyboard" aria-label="QWERTY 虚拟键盘"></div>
             <div class="hand-panel right-hand-visual" data-hand="右手" aria-label="右手指法图">
-              <svg viewBox="0 0 140 150" role="img" aria-label="右手五指">
-                <path class="palm" d="M27 82c0-15 12-27 27-27h45c16 0 29 13 29 29v29c0 20-16 36-36 36H64c-20 0-37-17-37-37V82Z"/>
-                <g class="finger" data-finger="小指"><rect x="10" y="47" width="20" height="61" rx="10"/></g>
-                <g class="finger" data-finger="无名指"><rect x="34" y="23" width="21" height="82" rx="10"/></g>
-                <g class="finger" data-finger="中指"><rect x="59" y="10" width="21" height="95" rx="10"/></g>
-                <g class="finger" data-finger="食指"><rect x="84" y="27" width="21" height="78" rx="10"/></g>
-                <g class="finger" data-finger="拇指"><rect x="108" y="65" width="21" height="60" rx="10" transform="rotate(-27 118 95)"/></g>
+              <svg viewBox="0 0 180 210" role="img" aria-label="右手五指">
+                <defs><linearGradient id="skinRight" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0c7aa"/><stop offset="1" stop-color="#c98e71"/></linearGradient></defs>
+                <path class="wrist" d="M49 155h76l9 55H40l9-55Z" fill="url(#skinRight)"/>
+                <path class="palm" d="M33 88c8-15 21-23 39-23h33c20 0 34 10 40 29l7 28c5 20-4 42-22 52-14 8-58 7-72 1-18-8-28-25-27-45l2-42Z" fill="url(#skinRight)"/>
+                <g class="finger" data-finger="小指"><path class="finger-shape" d="M39 111c-10 1-17-6-18-16L18 55c-1-11 5-18 13-19 9-1 15 5 16 16l3 41c1 10-3 17-11 18Z" fill="url(#skinRight)"/><ellipse class="nail" cx="31" cy="50" rx="7" ry="10"/></g>
+                <g class="finger" data-finger="无名指"><path class="finger-shape" d="M64 102c-10 0-16-7-16-17l1-58c0-12 7-19 16-19s15 7 15 19l-1 58c0 11-6 17-15 17Z" fill="url(#skinRight)"/><ellipse class="nail" cx="65" cy="23" rx="7" ry="11"/></g>
+                <g class="finger" data-finger="中指"><path class="finger-shape" d="M91 99c-10 0-16-7-16-18L78 18C79 6 86 0 95 1c9 0 15 8 14 20l-3 62c0 11-6 16-15 16Z" fill="url(#skinRight)"/><ellipse class="nail" cx="94" cy="16" rx="7" ry="11"/></g>
+                <g class="finger" data-finger="食指"><path class="finger-shape" d="M118 105c-10-1-15-8-14-19l5-51c1-12 8-18 17-17 9 1 14 9 13 20l-5 51c-1 11-7 17-16 16Z" fill="url(#skinRight)"/><ellipse class="nail" cx="125" cy="33" rx="7" ry="10" transform="rotate(6 125 33)"/></g>
+                <g class="finger" data-finger="拇指"><path class="finger-shape" d="M128 117c3-9 10-23 18-34 7-10 17-12 24-6 7 6 7 15 1 24l-25 37c-6 9-14 12-21 7-7-5-3-17 3-28Z" fill="url(#skinRight)"/><ellipse class="nail" cx="160" cy="88" rx="7" ry="10" transform="rotate(38 160 88)"/></g>
               </svg>
               <strong>右手</strong><small>JKL; 基准键</small>
             </div>
