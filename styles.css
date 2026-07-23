@@ -91,6 +91,8 @@ kbd { display: inline-block; min-width: 33px; padding: 2px 5px; color: #ddd5c7; 
 .finger-coach strong { font-size: 13px; letter-spacing: .06em; }
 .virtual-keyboard { width: min(100%, 570px); margin: auto; user-select: none; }
 .keyboard-with-hands { display: block; }
+.hands-3d { display: none; }
+.hands-3d canvas { display: block; width: 100%; height: 100%; }
 .hand-panel { display: none; flex-direction: column; align-items: center; pointer-events: none; opacity: .27; transition: opacity .22s, filter .22s; }
 .hand-panel svg { width: 240px; height: 220px; overflow: visible; filter: drop-shadow(0 8px 8px rgba(48,31,23,.12)); }
 .hand-panel .wrist, .hand-panel .palm, .hand-panel .finger-shape { stroke: rgba(83,48,34,.5); stroke-width: 1.2; stroke-linejoin: round; }
@@ -201,6 +203,9 @@ kbd { display: inline-block; min-width: 33px; padding: 2px 5px; color: #ddd5c7; 
   .keyboard-guide { padding: 10px 30px 14px; }
   .finger-coach { margin-bottom: 2px; }
   .keyboard-with-hands { position: relative; display: block; width: 1000px; min-height: 282px; margin: auto; }
+  .hands-3d { position: absolute; inset: 0; z-index: 2; display: block; pointer-events: none; opacity: 0; transition: opacity .35s ease; }
+  body.three-ready .hands-3d { opacity: .86; }
+  body.three-ready .hand-panel { display: none; }
   .hand-panel { position: absolute; z-index: 2; top: 69px; display: flex; width: 250px; }
   .left-hand-visual { left: 188px; }
   .right-hand-visual { right: 188px; }

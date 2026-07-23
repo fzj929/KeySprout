@@ -1,0 +1,15 @@
+{
+  "name": "keysprout",
+  "version": "1.0.0",
+  "private": true,
+  "description": "面向小学生的英文单词键盘与指法练习网页",
+  "scripts": {
+    "build:3d": "esbuild hand3d.js --bundle --format=iife --platform=browser --target=es2020 --minify --outfile=hand3d.bundle.js"
+  },
+  "dependencies": {
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1"
+  }
+}

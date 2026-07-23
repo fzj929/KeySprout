@@ -139,6 +139,8 @@ function renderKeyboard() {
 }
 
 function highlightFinger(hand = '', finger = '') {
+  window.KeySproutFingerState = { hand, finger };
+  window.dispatchEvent(new CustomEvent('keysprout:finger', { detail: { hand, finger } }));
   document.querySelectorAll('.hand-panel').forEach(panel => {
     const handMatches = panel.dataset.hand === hand || hand === '任意手';
     panel.classList.toggle('active-hand', handMatches);
